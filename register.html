@@ -1,0 +1,147 @@
+<!-- <!doctype html>
+<html>
+    <head>
+
+    </head>
+    <body>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="text-center mb-4">Register</h2>
+        <form method="POST" action="{{ url_for('register') }}">
+            <div class="mb-3">
+                <label for="first_name" class="form-label">First Name:</label>
+                <input type="text" class="form-control" name="first_name" required>
+            </div>
+            <div class="mb-3">
+                <label for="last_name" class="form-label">Last Name:</label>
+                <input type="text" class="form-control" name="last_name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Age:</label>
+                <input type="number" class="form-control" name="age" required>
+            </div>
+            <div class="mb-3">
+                <label for="weight" class="form-label">Weight:</label>
+                <input type="number" class="form-control" name="weight" required>
+            </div>
+            <div class="mb-3" id="doctor-fields" style="display:none;">
+                <label for="doctor_field" class="form-label">Doctor's Specialty:</label>
+                <input type="text" class="form-control" name="doctor_field"><br>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Register</button>
+        </form>
+    </div>
+</div>
+</body>
+</html> -->
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Meta tags for responsiveness -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Register - Universal Patient Management System</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h2 class="text-center mb-4">Register</h2>
+
+                    <!-- Registration form -->
+                    <form method="POST" action="{{ url_for('register') }}" onsubmit="return validateForm()">
+                        <div class="form-group">
+                            <label for="first_name" class="form-label">First Name:</label>
+                            <input type="text" class="form-control" name="first_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name" class="form-label">Last Name:</label>
+                            <input type="text" class="form-control" name="last_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="form-label">Password:</label>
+                            <input type="password" class="form-control" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="age" class="form-label">Age:</label>
+                            <input type="number" class="form-control" name="age" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="weight" class="form-label">Weight:</label>
+                            <input type="number" class="form-control" name="weight" required>
+                        </div>
+
+                        <!-- Role Selection -->
+                        <div class="form-group">
+                            <label for="role" class="form-label">Register as:</label>
+                            <select class="form-control" name="role" id="role" required>
+                                <option value="" disabled selected>Select Role</option>
+                                <option value="Patient">Patient</option>
+                                <option value="Doctor">Doctor</option>
+                            </select>
+                        </div>
+
+                        <!-- Doctor fields (hidden by default) -->
+                        <div class="form-group" id="doctor-fields" style="display:none;">
+                            <label for="specialization" class="form-label"> Specialization:</label>
+                            <input type="text" class="form-control" name="specialization" id="specialization">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Optional JavaScript; Bootstrap and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Script to toggle Doctor fields based on role selection and validate form -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const doctorFields = document.getElementById('doctor-fields');
+                const roleSelector = document.getElementById('role');
+                const specializationInput = document.getElementById('specialization');
+
+                roleSelector.addEventListener('change', function () {
+                    if (this.value === 'Doctor') {
+                        doctorFields.style.display = 'block';
+                        specializationInput.setAttribute('required', true); // Make specialization required
+                    } else {
+                        doctorFields.style.display = 'none';
+                        specializationInput.removeAttribute('required'); // Remove required if not a doctor
+                    }
+                });
+            });
+
+            function validateForm() {
+                const role = document.getElementById('role').value;
+                const specialization = document.getElementById('specialization').value;
+
+                if (role === 'Doctor' && specialization.trim() === '') {
+                    alert('Please provide your specialization if registering as a doctor.');
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </body>
+</html>

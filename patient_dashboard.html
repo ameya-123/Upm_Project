@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Patient Dashboard - Universal Patient Management System</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Welcome, {{ session['full_name'] }}</h2>
+        <h4 class="text-center mb-4">Patient Dashboard</h4>
+
+         <!-- Book Appointment Button -->
+        <div class="text-center">
+            <a href="{{ url_for('book_appointment') }}" class="btn btn-primary btn-lg">Book Appointment</a>
+        </div>
+
+        <!-- Other Dashboard Content Here -->
+
+        <div class="card mb-4">
+            <div class="card-header">My Appointments</div>
+            <div class="card-body">
+                {% if appointments %}
+                    <ul class="list-group">
+                        {% for appointment in appointments %}
+                            <li class="list-group-item">
+                                <strong>Doctor:</strong> {{ appointment['D_mail'] }} <br>
+                                <strong>Date:</strong> {{ appointment['booking_details'] }} <br>
+                                <strong>Reason:</strong> {{ appointment['reason'] }} <br>
+                                <strong>Status:</strong> {{ appointment['status'] }} <br>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No appointments scheduled.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ url_for('logout') }}" class="btn btn-danger btn-lg">Logout</a>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript; Bootstrap and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

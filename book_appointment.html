@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Book Appointment - Universal Patient Management System</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Book Appointment</h2>
+
+        <!-- Appointment Form -->
+        <form method="POST">
+            <div class="form-group">
+                <label for="doctor_email">Select Doctor:</label>
+                <select class="form-control" name="doctor_email" required>
+                    <option value="" disabled selected>Select a doctor</option>
+                    {% for doctor in doctors %}
+                        <option value="{{ doctor['D_mail'] }}">{{ doctor['Fname'] }} {{ doctor['Lname'] }} ({{ doctor['D_mail'] }})</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="appointment_date">Appointment Date:</label>
+                <input type="date" class="form-control" name="appointment_date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="appointment_time">Appointment Time:</label>
+                <input type="time" class="form-control" name="appointment_time" required>
+            </div>
+
+          
+
+            <div class="form-group">
+                <label for="payment_method">Payment Method:</label>
+                <select class="form-control" name="payment_method" required>
+                    <option value="" disabled selected>Select Payment Method</option>
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Debit Card">Debit Card</option>
+                    <option value="PayPal">PayPal</option>
+                    <option value="Cash">Cash</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="reason">Reason for Appointment:</label>
+                <textarea class="form-control" name="reason" rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Book Appointment</button>
+        </form>
+    </div>
+
+    <!-- Optional JavaScript; Bootstrap and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

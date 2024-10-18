@@ -1,0 +1,89 @@
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+<div class="text-center">
+    <h1 class="mb-4">Welcome to the Universal Patient Management System</h1>
+    <p class="lead">Manage your health efficiently with our advanced system, tailored for patients, doctors, and admins.</p>
+
+    <div class="mt-4">
+        <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg me-3">Login</a>
+        <a href="{{ url_for('register') }}" class="btn btn-secondary btn-lg">Register</a>
+    </div>
+</div>
+</body>
+</html> -->
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+<div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to Universal Patient Management System</h1>
+    <p class="lead">Your health is our priority. Manage your appointments, prescriptions, and more.</p>
+    <hr class="my-4">
+    <p>Already have an account? Click below to log in or register if you're new.</p>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('login') }}" role="button">Login</a>
+    <a class="btn btn-secondary btn-lg" href="{{ url_for('register') }}" role="button">Register</a>
+</div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Meta tags for responsiveness -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Home - Universal Patient Management System</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS for additional styling (optional) -->
+        <style>
+            body {
+                background-color: #f8f9fa;
+            }
+            .jumbotron {
+                background-color: #e9ecef;
+                padding: 4rem 2rem;
+                margin-top: 50px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 3rem;
+                font-weight: bold;
+            }
+            p.lead {
+                font-size: 1.25rem;
+            }
+            .btn-lg {
+                margin-right: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Main content container -->
+        <div class="container mt-5">
+            <div class="jumbotron text-center">
+                <h1 class="display-4">Welcome to Universal Patient Management System</h1>
+                <p class="lead">Your health is our priority. Manage your appointments, prescriptions, and more effortlessly.</p>
+                <hr class="my-4">
+                <p>Already have an account? Click below to log in, or register if you're new here.</p>
+                <a class="btn btn-primary btn-lg" href="{{ url_for('login') }}" role="button">Login</a>
+                <a class="btn btn-secondary btn-lg" href="{{ url_for('register') }}" role="button">Register</a>
+            </div>
+        </div>
+
+        <!-- Optional JavaScript; Bootstrap and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
+
+
